@@ -1,3 +1,4 @@
+import Notiflix from 'notiflix';
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 const refInput = document.querySelector('#datetime-picker');
@@ -9,12 +10,8 @@ const ref = {
   seconds: document.querySelector('span[data-seconds]'),
 };
 startBtn.setAttribute('disabled', 'disabled');
-let datePicker;
 let pickerDate = null;
-let startDate;
-let ms;
 let isActive = false;
-// console.log(refInput);
 
 const options = {
   enableTime: true,
@@ -27,7 +24,9 @@ const options = {
       return;
     }
     if (Date.now() > selectedDates[0]) {
-      alert('Please choose a date in the future');
+      Notiflix.Notify.warning('Please choose a date in the future', {
+        timeout: 6000,
+      });
       return;
     }
     pickerDate = selectedDates[0];
@@ -53,13 +52,7 @@ function start() {
     ref.seconds.innerHTML = addLeadingZero(timeComponents.seconds);
   }, 1000);
 }
-// function onTick(ms) {
-//   let timeComponents = convertMs(ms);
-//   ref.days.value = '${days}';
-//   ref.hours.value = '${hours}';
-//   ref.minutes.value = '${minutes}';
-//   ref.seconds.value = '${seconds}';
-// }
+
 function convertMs(ms) {
   // Number of milliseconds per unit of time
   const second = 1000;

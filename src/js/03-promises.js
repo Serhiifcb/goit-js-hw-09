@@ -25,7 +25,7 @@ function startCreatePromises(event) {
         Notiflix.Notify.success(
           `✅ Fulfilled promise ${position} in ${delay}ms`,
           {
-            timeout: 10000,
+            timeout: 7000,
           }
         );
       })
@@ -33,7 +33,7 @@ function startCreatePromises(event) {
         Notiflix.Notify.failure(
           `❌ Rejected promise ${position} in ${delay}ms`,
           {
-            timeout: 10000,
+            timeout: 7000,
           }
         );
       });

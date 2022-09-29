@@ -43,7 +43,7 @@ function start() {
   isActive = true;
   startBtn.setAttribute('disabled', 'disabled');
   setInterval(() => {
-    deltaTime = pickerDate - Date.now();
+    let deltaTime = pickerDate - Date.now();
     let timeComponents = convertMs(deltaTime);
     ref.days.innerHTML = addLeadingZero(timeComponents.days);
     ref.hours.innerHTML = addLeadingZero(timeComponents.hours);
